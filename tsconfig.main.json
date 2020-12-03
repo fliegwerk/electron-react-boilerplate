@@ -9,8 +9,5 @@
 			"*": ["node_modules/*"]
 		}
 	},
-	"include": [
-		"main",
-		"src/model"
-	]
+	"include": ["main", "src/model"]
 }

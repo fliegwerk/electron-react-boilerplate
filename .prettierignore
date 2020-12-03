@@ -39,4 +39,5 @@ composer.lock
 .eslintcache
 
 # build files
-packages/*/build
+/dist
+/build

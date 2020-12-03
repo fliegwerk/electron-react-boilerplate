@@ -11,9 +11,9 @@
 	"bugs": "https://github.com/fliegwerk/electron-react-boilerplate/issues",
 	"scripts": {
 		"prestart": "npm run build:main",
-		"start": "concurrently --kill-others --raw npm:start:renderer npm:start:main",
+		"start": "concurrently --kill-others --raw npm:start:renderer npm:start:main || true",
 		"start:main": "wait-on http://localhost:3000 && electron ./dist/index.js",
-		"start:renderer": "cross-env BROWSER=none react-scripts start",
+		"start:renderer": "cross-env BROWSER=none react-scripts start || true",
 		"build": "concurrently npm:build:main npm:build:renderer",
 		"build:main": "tsc --build tsconfig.main.json",
 		"build:renderer": "react-scripts build",
