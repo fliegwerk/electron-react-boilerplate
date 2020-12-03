@@ -2,6 +2,61 @@
 	"name": "react-electron-typescript",
 	"version": "0.1.0",
 	"private": true,
+	"description": "A boilerplate to develop an electron application with react in a simple manner",
+	"repository": {
+		"type": "git",
+		"url": "git@github.com:fliegwerk/electron-react-boilerplate.git"
+	},
+	"homepage": "./",
+	"bugs": "https://github.com/fliegwerk/electron-react-boilerplate/issues",
+	"scripts": {
+		"prestart": "npm run build:main",
+		"start": "concurrently --kill-others --raw npm:start:renderer npm:start:main",
+		"start:main": "wait-on http://localhost:3000 && electron ./dist/index.js",
+		"start:renderer": "cross-env BROWSER=none react-scripts start",
+		"build": "concurrently npm:build:main npm:build:renderer",
+		"build:main": "tsc --build tsconfig.main.json",
+		"build:renderer": "react-scripts build",
+		"test": "react-scripts test",
+		"style": "prettier --write package.json '**/*{.ts,.tsx,.js,.jsx,.json,.html,.css,.scss,.yaml,.yml,.md}'",
+		"style:ci": "prettier --check package.json '**/*{.ts,.tsx,.js,.jsx,.json,.html,.css,.scss,.yaml,.yml,.md}'"
+	},
+	"build": {
+		"appId": "com.fliegwerk.electron-react-boilerplate",
+		"productName": "Electron React Boilerplate",
+		"files": [
+			"dist/index.js",
+			"node_modules/**/*",
+			"build/**/*"
+		],
+		"directories": {
+			"buildResources": "resources",
+			"output": "release"
+		},
+		"win": {
+			"target": [
+				"portable",
+				"nsis"
+			],
+			"icon": "win/icon.ico"
+		},
+		"mac": {
+			"category": "public.app-category.utilities",
+			"target": [
+				"default"
+			],
+			"icon": "mac/icon.icns"
+		},
+		"linux": {
+			"category": "Utility",
+			"target": [
+				"AppImage",
+				"deb",
+				"rpm"
+			],
+			"icon": "png/"
+		}
+	},
 	"dependencies": {
 		"electron": "^11.0.3",
 		"react": "^17.0.1",
@@ -25,18 +80,6 @@
 		"react-scripts": "4.0.1",
 		"typescript": "^4.1.2",
 		"wait-on": "^5.2.0"
-	},
-	"scripts": {
-		"prestart": "npm run build:main",
-		"start": "concurrently --kill-others --raw npm:start:renderer npm:start:main",
-		"start:main": "wait-on http://localhost:3000 && electron ./dist/index.js",
-		"start:renderer": "cross-env BROWSER=none react-scripts start",
-		"build": "concurrently npm:build:main npm:build:renderer",
-		"build:main": "tsc --build tsconfig.main.json",
-		"build:renderer": "react-scripts build",
-		"test": "react-scripts test",
-		"style": "prettier --write package.json '**/*{.ts,.tsx,.js,.jsx,.json,.html,.css,.scss,.yaml,.yml,.md}'",
-		"style:ci": "prettier --check package.json '**/*{.ts,.tsx,.js,.jsx,.json,.html,.css,.scss,.yaml,.yml,.md}'"
 	},
 	"eslintConfig": {
 		"extends": [
