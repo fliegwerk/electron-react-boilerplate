@@ -3,8 +3,9 @@
 		"module": "commonjs",
 		"noImplicitAny": true,
 		"sourceMap": true,
-		"outDir": "dist",
+		"outDir": "build",
 		"baseUrl": ".",
+		"esModuleInterop": true,
 		"paths": {
 			"*": ["node_modules/*"]
 		}

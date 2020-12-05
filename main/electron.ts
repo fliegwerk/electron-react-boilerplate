@@ -1,4 +1,6 @@
 import { app, BrowserWindow } from 'electron';
+import { join } from 'path';
+import isDev from 'electron-is-dev';
 
 function createWindow() {
 	// Create the browser window.
@@ -11,7 +13,9 @@ function createWindow() {
 	});
 
 	// and load the index.html of the app.
-	mainWindow.loadURL('http://localhost:3000/');
+	mainWindow.loadURL(
+		isDev ? 'http://localhost:3000/' : `file://${join(__dirname, 'index.html')}`
+	);
 
 	// Open the DevTools.
 	// mainWindow.webContents.openDevTools()

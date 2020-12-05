@@ -8,26 +8,37 @@
 		"url": "git@github.com:fliegwerk/electron-react-boilerplate.git"
 	},
 	"homepage": "./",
-	"bugs": "https://github.com/fliegwerk/electron-react-boilerplate/issues",
+	"bugs": {
+		"url": "https://github.com/fliegwerk/electron-react-boilerplate/issues"
+	},
+	"author": {
+		"name": "fliegwerk",
+		"email": "cockpit@fliegwerk.com",
+		"url": "https://www.fliegwerk.com/"
+	},
 	"scripts": {
 		"prestart": "npm run build:main",
-		"start": "concurrently --kill-others --raw npm:start:renderer npm:start:main || true",
-		"start:main": "wait-on http://localhost:3000 && electron ./dist/index.js",
-		"start:renderer": "cross-env BROWSER=none react-scripts start || true",
+		"start": "concurrently --kill-others --raw npm:start:renderer npm:start:main || exit 0",
+		"start:main": "wait-on http://localhost:3000 && electron ./build/electron.js",
+		"start:renderer": "cross-env BROWSER=none react-scripts start || exit 0",
 		"build": "concurrently npm:build:main npm:build:renderer",
 		"build:main": "tsc --build tsconfig.main.json",
 		"build:renderer": "react-scripts build",
+		"postinstall": "electron-builder install-app-deps",
 		"test": "react-scripts test",
 		"style": "prettier --write package.json '**/*{.ts,.tsx,.js,.jsx,.json,.html,.css,.scss,.yaml,.yml,.md}'",
-		"style:ci": "prettier --check package.json '**/*{.ts,.tsx,.js,.jsx,.json,.html,.css,.scss,.yaml,.yml,.md}'"
+		"style:ci": "prettier --check package.json '**/*{.ts,.tsx,.js,.jsx,.json,.html,.css,.scss,.yaml,.yml,.md}'",
+		"package": "npm run build && electron-builder -mwl",
+		"package:linux": "npm run build && electron-builder --linux",
+		"package:win": "npm run build && electron-builder --win",
+		"package:mac": "npm run build && electron-builder --mac"
 	},
 	"build": {
 		"appId": "com.fliegwerk.electron-react-boilerplate",
 		"productName": "Electron React Boilerplate",
 		"files": [
-			"dist/index.js",
-			"node_modules/**/*",
-			"build/**/*"
+			"build/**/*",
+			"node_modules/**/*"
 		],
 		"directories": {
 			"buildResources": "resources",
@@ -58,10 +69,7 @@
 		}
 	},
 	"dependencies": {
-		"electron": "^11.0.3",
-		"react": "^17.0.1",
-		"react-dom": "^17.0.1",
-		"web-vitals": "^0.2.4"
+		"electron-is-dev": "^1.2.0"
 	},
 	"devDependencies": {
 		"@testing-library/jest-dom": "^5.11.4",
@@ -73,10 +81,13 @@
 		"@types/react-dom": "^16.9.8",
 		"concurrently": "^5.3.0",
 		"cross-env": "^7.0.3",
+		"electron": "^11.0.3",
 		"electron-builder": "^22.9.1",
 		"eslint-config-prettier": "^6.15.0",
 		"eslint-plugin-prettier": "^3.1.4",
 		"prettier": "^2.2.1",
+		"react": "^17.0.1",
+		"react-dom": "^17.0.1",
 		"react-scripts": "4.0.1",
 		"typescript": "^4.1.2",
 		"wait-on": "^5.2.0"
