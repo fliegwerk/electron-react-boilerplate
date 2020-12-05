@@ -20,3 +20,9 @@ jobs:
         run: npm run build
       - name: Run íntegration iests
         run: npm run test
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: build-${{ github.action }}
+          path: build/
+          retention-days: 7
