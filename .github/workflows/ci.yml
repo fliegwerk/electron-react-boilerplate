@@ -8,12 +8,12 @@ jobs:
     env:
       CI: true
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v2.3.4
+      - uses: actions/setup-node@v2.1.2
         with:
           node-version: 13
       - name: Cache node modules
-        uses: actions/cache@v2
+        uses: actions/cache@v2.1.3
         env:
           cache-name: cache-node-modules
         with:
@@ -33,7 +33,7 @@ jobs:
       - name: Run íntegration iests
         run: npm run test
       - name: Upload build artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v2.2.1
         with:
           name: build-${{ github.run_id }}
           path: build/
