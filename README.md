@@ -1,3 +1,7 @@
+<p align="center">
+	<img height="300" src="./images/logo-path.svg">
+</p>
+
 # Another Electron React Boilerplate with Typescript Support
 
 A boilerplate to develop an electron application with react in a simple manner
@@ -45,10 +49,7 @@ Builds the app for production to the `build` folder.\
 It correctly bundles React in production mode and optimizes the build for the best performance.\
 Additionally, it builds the main electron process scripts next to the webpage build.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+The build is minified and the filenames include the hashes.
 
 ### `npm run package`
 
