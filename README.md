@@ -1,5 +1,5 @@
 <p align="center">
-	<img height="300" src="./images/logo-path.svg">
+	<img height="300" src="./branding/logos/v1@2x.png">
 </p>
 
 # Another Electron React Boilerplate with Typescript Support
