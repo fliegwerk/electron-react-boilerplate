@@ -78,6 +78,25 @@ which can configured via the `.prettierrc.js` file.
 Please also take a look at the `.editorconfig` which defines the default formatting in your editor.\
 For more information, take a look at their [landing page](https://editorconfig.org/).
 
+## Adding dependencies
+
+Add dependencies is a simple task.\
+If you need the dependency only on the React app, install it as development dependency:
+
+```
+npm install --save-dev new-renderer-dep
+```
+
+If you need the dependency also in the main process scripts, install it as normal project dependency:
+
+```
+npm install new-main-dep
+```
+
+This is needed, because electron-builder will bundle all normal project dependencies
+next to the `build` folder in the packaged application,
+and the react-scripts builder integrates all imported dependencies directly into the `build` folder.
+
 ## Publishing
 
 When you want to create a new release, follow these steps:
