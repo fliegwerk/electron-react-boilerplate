@@ -78,6 +78,25 @@ which can configured via the `.prettierrc.js` file.
 Please also take a look at the `.editorconfig` which defines the default formatting in your editor.\
 For more information, take a look at their [landing page](https://editorconfig.org/).
 
+## Publishing
+
+When you want to create a new release, follow these steps:
+
+1. Bump the version in the `package.json` `version` field based the changes (e.g. from `1.1.2` to `1.2.0`)
+2. Commit this change:
+   ```
+   git commit -am "Bump package version (v1.2.0)"
+   ```
+3. Tag the created commit:
+   ```
+   git tag v1.2.0
+   ```
+   Make sure the tag name's format follows the structure `vX.X.X`. (because the release workflow will detect the git tag)
+4. Push the change and the git tag to the github repository:
+   ```
+   git push && git push --tag
+   ```
+
 ## Project structure
 
 ```yaml

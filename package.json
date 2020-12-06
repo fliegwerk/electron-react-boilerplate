@@ -36,6 +36,9 @@
 	"build": {
 		"appId": "com.fliegwerk.electron-react-boilerplate",
 		"productName": "Electron React Boilerplate",
+		"publish": [
+			"github"
+		],
 		"files": [
 			"build/**/*",
 			"node_modules/**/*"
