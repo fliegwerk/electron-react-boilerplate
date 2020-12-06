@@ -1,6 +1,6 @@
 {
 	"name": "react-electron-typescript",
-	"version": "0.1.0",
+	"version": "0.0.9",
 	"private": true,
 	"description": "A boilerplate to develop an electron application with react in a simple manner",
 	"repository": {
