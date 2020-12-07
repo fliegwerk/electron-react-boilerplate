@@ -1,11 +1,12 @@
 {
 	"compilerOptions": {
-		"module": "commonjs",
+		"module": "amd",
 		"noImplicitAny": true,
 		"sourceMap": true,
-		"outDir": "build",
+		"outFile": "build/electron.js",
 		"baseUrl": ".",
 		"esModuleInterop": true,
+		"moduleResolution": "Node",
 		"paths": {
 			"*": ["node_modules/*"]
 		}

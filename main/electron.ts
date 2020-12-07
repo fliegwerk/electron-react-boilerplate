@@ -2,6 +2,9 @@ import { app, BrowserWindow } from 'electron';
 import { join } from 'path';
 import isDev from 'electron-is-dev';
 
+//import MenuBuilder from './menu';
+import { register, unregister } from './ipc';
+
 function createWindow() {
 	// Create the browser window.
 	const mainWindow = new BrowserWindow({
@@ -25,6 +28,10 @@ function createWindow() {
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
 app.whenReady().then(() => {
+	console.log('Hello World');
+	console.log(JSON.stringify(process.env, null, 2));
+
+	register();
 	createWindow();
 
 	app.on('activate', function () {
@@ -38,7 +45,10 @@ app.whenReady().then(() => {
 // for applications and their menu bar to stay active until the user quits
 // explicitly with Cmd + Q.
 app.on('window-all-closed', function () {
-	if (process.platform !== 'darwin') app.quit();
+	if (process.platform !== 'darwin') {
+		app.quit();
+		unregister();
+	}
 });
 
 // In this file you can include the rest of your app's specific main process
