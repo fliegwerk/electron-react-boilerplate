@@ -4,6 +4,15 @@
 
 # Another Electron React Boilerplate with Typescript Support
 
+[![Build status](https://img.shields.io/github/workflow/status/fliegwerk/electron-react-boilerplate/CI)](https://github.com/fliegwerk/electron-react-boilerplate/actions?query=workflow%3ACI)
+[![License](https://img.shields.io/github/license/fliegwerk/electron-react-boilerplate)](https://github.com/fliegwerk/electron-react-boilerplate)
+![Project version](https://img.shields.io/github/package-json/v/fliegwerk/electron-react-boilerplate)
+![React dependency version](https://img.shields.io/github/package-json/dependency-version/fliegwerk/electron-react-boilerplate/dev/react)
+![Electron dependency version](https://img.shields.io/github/package-json/dependency-version/fliegwerk/electron-react-boilerplate/dev/electron)
+![Typescript dependency version](https://img.shields.io/github/package-json/dependency-version/fliegwerk/electron-react-boilerplate/dev/typescript)
+
+[![Built using electron react boilerplate](https://img.shields.io/static/v1?label=Built%20using&message=electron-react-boilerplate&labelColor=2B2E3A&color=61DAFB)](https://github.com/fliegwerk/electron-react-boilerplate)
+
 A boilerplate to develop an electron application with react in a simple manner
 
 ## Introduction
