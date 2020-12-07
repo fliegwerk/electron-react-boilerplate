@@ -1,5 +1,5 @@
 <p align="center">
-	<img src="./branding/logos/v1@2x.png">
+	<img src="./branding/logos/v1@2x.png" alt="electron-react-boilerplate: React + Electron + TypeScript">
 </p>
 
 # Another Electron React Boilerplate with Typescript Support
