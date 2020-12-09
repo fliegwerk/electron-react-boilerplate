@@ -11,3 +11,21 @@ code {
 	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
 		monospace;
 }
+
+/**
+ * make electron app feel more native
+ *
+ *   * Prevent dragging all HTML elements, specially:
+ *   	- images
+ *   	- links (anchors)
+ *
+ *   * Prevent text selection
+ */
+*,
+*::after,
+*::before {
+	-webkit-user-select: none;
+	-webkit-user-drag: none;
+	-webkit-app-region: no-drag;
+	cursor: default;
+}

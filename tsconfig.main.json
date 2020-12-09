@@ -1,11 +1,13 @@
 {
 	"compilerOptions": {
-		"module": "amd",
+		"outDir": "./build/",
 		"noImplicitAny": true,
-		"sourceMap": true,
-		"outFile": "build/electron.js",
+		"module": "es6",
+		"target": "es5",
+		"allowJs": true,
 		"baseUrl": ".",
 		"esModuleInterop": true,
+		"allowSyntheticDefaultImports": true,
 		"moduleResolution": "Node",
 		"paths": {
 			"*": ["node_modules/*"]

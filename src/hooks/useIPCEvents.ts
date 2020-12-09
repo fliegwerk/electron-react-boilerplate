@@ -1,5 +1,3 @@
 import { ipcRenderer } from 'electron';
 
-export default function useIPCEvents() {
-
-}
+export default function useIPCEvents() {}

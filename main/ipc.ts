@@ -1,23 +1,59 @@
-import { ipcMain, Notification, BrowserWindow } from 'electron';
-import { SHOW_NOTIFICATION } from "../src/model/IPC/IPCChannel";
+import {
+	ipcMain,
+	dialog,
+	Notification,
+	BrowserWindow,
+	IpcMainEvent
+} from 'electron';
+import {
+	REPLY_MODAL,
+	SHOW_NOTIFICATION,
+	TRIGGER_MODAL
+} from '../src/model/IPC/IPCChannel';
 
-export function register() {
-	ipcMain.on(SHOW_NOTIFICATION, (_, message: string) => {
-		showNotification(message);
-	});
-	// add more listeners
-}
+/**
+ * Builds an ipc manager for an browser window.
+ */
+export default class IPCManager {
+	private browserWindow: BrowserWindow;
 
-export function unregister() {
-	ipcMain.removeAllListeners(SHOW_NOTIFICATION);
-	// add more listeners to remove
-}
+	/**
+	 * Creates a new IPC manager and bind to a browser window.
+	 * @param browserWindow the browser window
+	 */
+	constructor(browserWindow: BrowserWindow) {
+		this.browserWindow = browserWindow;
+	}
 
-function showNotification(message: string) {
-	const notification = new Notification({
-		title: 'New notification from electron-react-boilerplate',
-		body: message
-	});
+	public register() {
+		ipcMain.on(SHOW_NOTIFICATION, this.showNotification);
+		ipcMain.on(TRIGGER_MODAL, this.triggerModal);
+		// add more listeners
+	}
 
-	notification.show();
+	public unregister() {
+		ipcMain.removeAllListeners(SHOW_NOTIFICATION);
+		ipcMain.removeAllListeners(TRIGGER_MODAL);
+		// add more listeners to remove
+	}
+
+	private showNotification(event: IpcMainEvent, message: string) {
+		const notification = new Notification({
+			title: 'New notification from electron-react-boilerplate',
+			body: message
+		});
+
+		notification.show();
+	}
+
+	private triggerModal(event: IpcMainEvent) {
+		const choice = dialog.showMessageBoxSync(this.browserWindow, {
+			type: 'question',
+			buttons: ['Cancel', 'OK'],
+			title: 'A nice modal',
+			message: "What's your answer?"
+		});
+
+		event.reply(REPLY_MODAL, choice === 1);
+	}
 }

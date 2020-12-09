@@ -2,16 +2,23 @@ import { app, BrowserWindow } from 'electron';
 import { join } from 'path';
 import isDev from 'electron-is-dev';
 
-//import MenuBuilder from './menu';
-import { register, unregister } from './ipc';
+import IPCManager from './ipc';
+import MenuBuilder from './menu';
+
+let mainWindow: BrowserWindow;
+
+let ipcManager: IPCManager;
+let menu: MenuBuilder;
 
 function createWindow() {
 	// Create the browser window.
-	const mainWindow = new BrowserWindow({
+	mainWindow = new BrowserWindow({
 		width: 800,
 		height: 600,
+		backgroundColor: '#282c34',
 		webPreferences: {
-			contextIsolation: true
+			contextIsolation: true,
+			spellcheck: false
 		}
 	});
 
@@ -22,32 +29,42 @@ function createWindow() {
 
 	// Open the DevTools.
 	// mainWindow.webContents.openDevTools()
+
+	// build additional elements
+	ipcManager = new IPCManager(mainWindow);
+	menu = new MenuBuilder(mainWindow, ipcManager);
+
+	// remove menu from window
+	// to activate, also comment out the buildMenu() methods below
+	//mainWindow.removeMenu();
 }
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
 app.whenReady().then(() => {
-	console.log('Hello World');
-	console.log(JSON.stringify(process.env, null, 2));
-
-	register();
 	createWindow();
+	ipcManager.register();
+	menu.buildMenu();
 
-	app.on('activate', function () {
+	app.on('activate', () => {
 		// On macOS it's common to re-create a window in the app when the
 		// dock icon is clicked and there are no other windows open.
-		if (BrowserWindow.getAllWindows().length === 0) createWindow();
+		if (BrowserWindow.getAllWindows().length === 0) {
+			createWindow();
+			ipcManager.register();
+			menu.buildMenu();
+		}
 	});
 });
 
 // Quit when all windows are closed, except on macOS. There, it's common
 // for applications and their menu bar to stay active until the user quits
 // explicitly with Cmd + Q.
-app.on('window-all-closed', function () {
+app.on('window-all-closed', () => {
 	if (process.platform !== 'darwin') {
 		app.quit();
-		unregister();
+		ipcManager.unregister();
 	}
 });
 

@@ -7,3 +7,5 @@ export const HIDE_MESSAGE = 'ipcMain:hide-message';
 
 // triggered by the render process
 export const SHOW_NOTIFICATION = 'ipcRenderer:show-notification';
+export const TRIGGER_MODAL = 'ipcRenderer:trigger:modal';
+export const REPLY_MODAL = 'ipcMain:reply:modal';
