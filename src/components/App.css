@@ -28,6 +28,20 @@
 	color: #61dafb;
 }
 
+.App-button {
+	border: 2px solid #61dafb;
+	color: white;
+	background-color: #282c34;
+	font-size: calc(10px + 1vmin);
+	font-weight: bold;
+	padding: 8px;
+	margin: 16px 4px 0 4px;
+}
+
+.App-button:hover {
+	background-color: #525a69;
+}
+
 @keyframes App-logo-spin {
 	from {
 		transform: rotate(0deg);

@@ -17,12 +17,13 @@
 		"url": "https://www.fliegwerk.com/"
 	},
 	"scripts": {
-		"prestart": "npm run build:main",
+		"prestart": "concurrently npm:build:main npm:build:preload",
 		"start": "concurrently --kill-others --raw npm:start:renderer npm:start:main || exit 0",
 		"start:main": "wait-on http://localhost:3000 && electron ./build/electron.js",
 		"start:renderer": "cross-env BROWSER=none react-scripts start || exit 0",
-		"build": "concurrently npm:build:main npm:build:renderer",
+		"build": "concurrently npm:build:main npm:build:preload npm:build:renderer",
 		"build:main": "webpack --config webpack.main.js",
+		"build:preload": "webpack --config webpack.preload.js",
 		"build:renderer": "react-scripts build",
 		"postinstall": "electron-builder install-app-deps",
 		"test": "react-scripts test",
@@ -86,6 +87,7 @@
 		"cross-env": "^7.0.3",
 		"electron": "^11.0.3",
 		"electron-builder": "^22.9.1",
+		"electron-devtools-installer": "^3.1.1",
 		"eslint-config-prettier": "^7.0.0",
 		"eslint-plugin-prettier": "^3.2.0",
 		"prettier": "^2.2.1",

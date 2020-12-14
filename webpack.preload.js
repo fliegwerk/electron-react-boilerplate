@@ -15,7 +15,7 @@ const coreModules = [
 module.exports = {
 	externals: [...coreModules, nodeExternals()],
 
-	entry: './electron/main/electron.ts',
+	entry: './electron/preload/preload.ts',
 	module: {
 		rules: [
 			{
@@ -37,7 +37,7 @@ module.exports = {
 	},
 	output: {
 		path: path.resolve(__dirname, 'build'),
-		filename: 'electron.js',
+		filename: 'preload.js',
 		libraryTarget: 'commonjs2'
 	},
 	/**

@@ -5,17 +5,13 @@ import {
 	BrowserWindow,
 	IpcMainEvent
 } from 'electron';
-import {
-	REPLY_MODAL,
-	SHOW_NOTIFICATION,
-	TRIGGER_MODAL
-} from '../src/model/IPC/IPCChannel';
+import IPCChannel from '../../src/model/IPC/IPCChannel';
 
 /**
  * Builds an ipc manager for an browser window.
  */
 export default class IPCManager {
-	private browserWindow: BrowserWindow;
+	private readonly browserWindow: BrowserWindow;
 
 	/**
 	 * Creates a new IPC manager and bind to a browser window.
@@ -25,19 +21,19 @@ export default class IPCManager {
 		this.browserWindow = browserWindow;
 	}
 
-	public register() {
-		ipcMain.on(SHOW_NOTIFICATION, this.showNotification);
-		ipcMain.on(TRIGGER_MODAL, this.triggerModal);
+	register() {
+		ipcMain.on(IPCChannel.SHOW_NOTIFICATION, this.showNotification);
+		ipcMain.on(IPCChannel.TRIGGER_MODAL, this.triggerModal);
 		// add more listeners
 	}
 
-	public unregister() {
-		ipcMain.removeAllListeners(SHOW_NOTIFICATION);
-		ipcMain.removeAllListeners(TRIGGER_MODAL);
+	unregister() {
+		ipcMain.removeAllListeners(IPCChannel.SHOW_NOTIFICATION);
+		ipcMain.removeAllListeners(IPCChannel.TRIGGER_MODAL);
 		// add more listeners to remove
 	}
 
-	private showNotification(event: IpcMainEvent, message: string) {
+	showNotification(event: IpcMainEvent, message: string) {
 		const notification = new Notification({
 			title: 'New notification from electron-react-boilerplate',
 			body: message
@@ -46,7 +42,7 @@ export default class IPCManager {
 		notification.show();
 	}
 
-	private triggerModal(event: IpcMainEvent) {
+	triggerModal(event: IpcMainEvent) {
 		const choice = dialog.showMessageBoxSync(this.browserWindow, {
 			type: 'question',
 			buttons: ['Cancel', 'OK'],
@@ -54,6 +50,10 @@ export default class IPCManager {
 			message: "What's your answer?"
 		});
 
-		event.reply(REPLY_MODAL, choice === 1);
+		event.reply(IPCChannel.REPLY_MODAL, choice === 1);
+	}
+
+	toggleMessage() {
+		this.browserWindow.webContents.send(IPCChannel.TOGGLE_MESSAGE);
 	}
 }

@@ -12,6 +12,10 @@ code {
 		monospace;
 }
 
+p {
+	color: white;
+}
+
 /**
  * make electron app feel more native
  *

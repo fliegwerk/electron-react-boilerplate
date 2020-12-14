@@ -14,9 +14,9 @@ interface DarwinMenuItemConstructorOptions extends MenuItemConstructorOptions {
 }
 
 export default class MenuBuilder {
-	mainWindow: BrowserWindow;
+	private readonly mainWindow: BrowserWindow;
 
-	ipcManager: IPCManager;
+	private readonly ipcManager: IPCManager;
 
 	constructor(mainWindow: BrowserWindow, ipcManager: IPCManager) {
 		this.mainWindow = mainWindow;
@@ -94,16 +94,9 @@ export default class MenuBuilder {
 			submenu: []
 		};
 
-		const subMenuViewDev: MenuItemConstructorOptions = {
+		const subMenuView: MenuItemConstructorOptions = {
 			label: 'View',
 			submenu: [
-				{
-					label: 'Reload',
-					accelerator: 'Command+R',
-					click: () => {
-						this.mainWindow.webContents.reload();
-					}
-				},
 				{
 					label: 'Toggle Full Screen',
 					accelerator: 'Ctrl+Command+F',
@@ -112,25 +105,30 @@ export default class MenuBuilder {
 					}
 				},
 				{
-					label: 'Toggle Developer Tools',
-					accelerator: 'Alt+Command+I',
+					label: 'Toggle renderer message',
 					click: () => {
-						this.mainWindow.webContents.toggleDevTools();
+						this.ipcManager.toggleMessage();
 					}
-				}
-			]
-		};
+				},
+				...(isDev
+					? [
+							{
+								label: 'Reload',
+								accelerator: 'Command+R',
+								click: () => {
+									this.mainWindow.webContents.reload();
+								}
+							},
 
-		const subMenuViewProd: MenuItemConstructorOptions = {
-			label: 'View',
-			submenu: [
-				{
-					label: 'Toggle Full Screen',
-					accelerator: 'Ctrl+Command+F',
-					click: () => {
-						this.mainWindow.setFullScreen(!this.mainWindow.isFullScreen());
-					}
-				}
+							{
+								label: 'Toggle Developer Tools',
+								accelerator: 'Alt+Command+I',
+								click: () => {
+									this.mainWindow.webContents.toggleDevTools();
+								}
+							}
+					  ]
+					: [])
 			]
 		};
 
@@ -148,8 +146,6 @@ export default class MenuBuilder {
 			]
 		};
 
-		// decide which view menu will be used on current app mode
-		const subMenuView = isDev ? subMenuViewDev : subMenuViewProd;
 		// concat all defined menu templates
 		return [subMenuAbout, subMenuEdit, subMenuView, subMenuWindow];
 	}
@@ -183,6 +179,12 @@ export default class MenuBuilder {
 						accelerator: 'F11',
 						click: () => {
 							this.mainWindow.setFullScreen(!this.mainWindow.isFullScreen());
+						}
+					},
+					{
+						label: 'Toggle renderer message',
+						click: () => {
+							this.ipcManager.toggleMessage();
 						}
 					},
 					...(isDev
