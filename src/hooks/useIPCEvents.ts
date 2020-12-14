@@ -12,6 +12,7 @@ export default function useIPCEvents(
 		const replyModalId = register(IPCChannel.REPLY_MODAL, (choice: boolean) => {
 			setModalChoice(choice);
 		});
+
 		return () => {
 			unregister(IPCChannel.TOGGLE_MESSAGE, toggleMessageId);
 			unregister(IPCChannel.REPLY_MODAL, replyModalId);

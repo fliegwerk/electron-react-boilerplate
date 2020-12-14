@@ -7,6 +7,8 @@ import {
 } from 'electron';
 import IPCChannel from '../../src/model/IPC/IPCChannel';
 
+import { build } from '../../package.json';
+
 /**
  * Builds an ipc manager for an browser window.
  */
@@ -35,7 +37,7 @@ export default class IPCManager {
 
 	showNotification(event: IpcMainEvent, message: string) {
 		const notification = new Notification({
-			title: 'New notification from electron-react-boilerplate',
+			title: `New notification from ${build.productName}`,
 			body: message
 		});
 
