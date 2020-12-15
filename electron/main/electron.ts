@@ -4,7 +4,7 @@ import isDev from 'electron-is-dev';
 
 import IPCManager from './ipc';
 import MenuBuilder from './menu';
-import enableAutoUpdates from "./autoUpdate";
+import enableAutoUpdates from './autoUpdate';
 
 let mainWindow: BrowserWindow | null = null;
 
