@@ -1,6 +1,4 @@
-<p>
-	<img src="./branding/logos/v1@2x.png" alt="electron-react-boilerplate: React + Electron + TypeScript">
-</p>
+<p><img src="./branding/logos/v1@2x.png" alt="electron-react-boilerplate: React + Electron + TypeScript"></p>
 
 # Another Electron React Boilerplate with Typescript Support
 
@@ -62,7 +60,7 @@ The build is minified, and the filenames include the hashes.
 
 ### `npm run package`
 
-Builds the app described the `npm run build` step and creates packages for different operating systems.
+Builds the app described in the `npm run build` step and creates packages for different operating systems.
 
 If you want to package for only one operating system, call:
 
@@ -90,7 +88,7 @@ For more information, take a look at their [landing page](https://editorconfig.o
 
 Checks the syntax of the sourcecode with [ESLint](https://eslint.org/).
 
-ESLint can be configured through the property `eslintConfig` in the `package.json`. 
+ESLint can be configured through the property `eslintConfig` in the `package.json`.
 
 ## Adding dependencies
 
