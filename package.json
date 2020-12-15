@@ -28,7 +28,7 @@
 		"postinstall": "electron-builder install-app-deps",
 		"test": "react-scripts test",
 		"style": "prettier --write package.json '**/*{.ts,.tsx,.js,.jsx,.json,.html,.css,.scss,.yaml,.yml,.md}'",
-		"style:ci": "prettier --check package.json '**/*{.ts,.tsx,.js,.jsx,.json,.html,.css,.scss,.yaml,.yml,.md}'",
+		"lint": "eslint src/**/*{.ts,.tsx} --ignore-pattern node_modules/ --no-error-on-unmatched-pattern",
 		"package": "npm run build && electron-builder -mwl",
 		"package:linux": "npm run build && electron-builder --linux",
 		"package:win": "npm run build && electron-builder --win",
