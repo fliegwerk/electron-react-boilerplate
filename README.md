@@ -40,7 +40,7 @@ In the project directory, you can run:
 
 Runs the app in the development mode.\
 Compiles the main process script and starts the react-scripts development server.\
-After the first compilation, it opens an electron window with the rendered content.\
+After the first compilation, it opens an electron window with the rendered content.
 
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
