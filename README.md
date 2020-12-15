@@ -1,4 +1,4 @@
-<p align="center">
+<p>
 	<img src="./branding/logos/v1@2x.png" alt="electron-react-boilerplate: React + Electron + TypeScript">
 </p>
 
@@ -86,6 +86,12 @@ It uses [Prettier](https://prettier.io/), an opportunistic code formatter, confi
 Please also take a look at the `.editorconfig`, which defines the default formatting in your editor.\
 For more information, take a look at their [landing page](https://editorconfig.org/).
 
+### `npm run lint`
+
+Checks the syntax of the sourcecode with [ESLint](https://eslint.org/).
+
+ESLint can be configured through the property `eslintConfig` in the `package.json`. 
+
 ## Adding dependencies
 
 Add dependencies is a simple task.\
@@ -124,6 +130,16 @@ When you want to create a new release, follow these steps:
    git push && git push --tag
    ```
 
+## Further information
+
+The boilerplate has a [Wiki](https://github.com/fliegwerk/electron-react-boilerplate/wiki)
+which describes toolchains, commands and recipes more in-depth.
+
+If you have any questions,
+please first take a look at the [FAQ](https://github.com/fliegwerk/electron-react-boilerplate/wiki/FAQ).
+
+To learn React, check out the [React documentation](https://reactjs.org/).
+
 ## Project structure
 
 ```yaml
@@ -152,10 +168,6 @@ root:
   - package-lock.json    # detailed information about the installed dependencies and their relation to each other
   - tsconfig.json        # the Typescript configuration file for the React app and their builder
   - tsconfig.main.json   # the Typescript configuration file for the build of main process scripts of electron
+  - webpack.main.js      # the configuration file for webpack compiling the main electron process script
+  - webpack.preload.js   # the configuration file for webpack compiling the preload script for browser windows
 ```
-
-## Learn More
-
-If you have any questions, please first take a look at the [FAQ](https://github.com/fliegwerk/electron-react-boilerplate/wiki/FAQ).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
