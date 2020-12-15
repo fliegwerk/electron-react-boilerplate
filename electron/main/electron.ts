@@ -4,6 +4,7 @@ import isDev from 'electron-is-dev';
 
 import IPCManager from './ipc';
 import MenuBuilder from './menu';
+import enableAutoUpdates from "./autoUpdate";
 
 let mainWindow: BrowserWindow | null = null;
 
@@ -108,6 +109,14 @@ app.on('window-all-closed', () => {
 		app.quit();
 	}
 });
+
+// feed server, change this to your custom deployment server
+const server = 'https://github.com/fliegwerk/electron-react-boilerplate';
+const feedURL = `${server}/update/${process.platform}/${app.getVersion()}`;
+const interval = 10 * 60 * 1000; // ms
+
+// enable this if you want auto updates
+//enableAutoUpdates(feedURL, interval);
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
