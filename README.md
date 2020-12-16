@@ -86,7 +86,7 @@ For more information, take a look at their [landing page](https://editorconfig.o
 
 ### `npm run lint`
 
-Checks the syntax of the sourcecode with [ESLint](https://eslint.org/).
+Checks the syntax of the source code with [ESLint](https://eslint.org/).
 
 ESLint can be configured through the property `eslintConfig` in the `package.json`.
 
