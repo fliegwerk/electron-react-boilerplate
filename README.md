@@ -1,6 +1,4 @@
-<p align="center">
-	<img src="./branding/logos/v1@2x.png" alt="electron-react-boilerplate: React + Electron + TypeScript">
-</p>
+<p><img src="./branding/logos/v1@2x.png" alt="electron-react-boilerplate: React + Electron + TypeScript"></p>
 
 # Another Electron React Boilerplate with Typescript Support
 
@@ -42,7 +40,7 @@ In the project directory, you can run:
 
 Runs the app in the development mode.\
 Compiles the main process script and starts the react-scripts development server.\
-After the first compilation, it opens an electron window with the rendered content.\
+After the first compilation, it opens an electron window with the rendered content.
 
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
@@ -62,7 +60,7 @@ The build is minified, and the filenames include the hashes.
 
 ### `npm run package`
 
-Builds the app described the `npm run build` step and creates packages for different operating systems.
+Builds the app described in the `npm run build` step and creates packages for different operating systems.
 
 If you want to package for only one operating system, call:
 
@@ -85,6 +83,12 @@ It uses [Prettier](https://prettier.io/), an opportunistic code formatter, confi
 
 Please also take a look at the `.editorconfig`, which defines the default formatting in your editor.\
 For more information, take a look at their [landing page](https://editorconfig.org/).
+
+### `npm run lint`
+
+Checks the syntax of the sourcecode with [ESLint](https://eslint.org/).
+
+ESLint can be configured through the property `eslintConfig` in the `package.json`.
 
 ## Adding dependencies
 
@@ -124,6 +128,16 @@ When you want to create a new release, follow these steps:
    git push && git push --tag
    ```
 
+## Further information
+
+The boilerplate has a [Wiki](https://github.com/fliegwerk/electron-react-boilerplate/wiki)
+which describes toolchains, commands and recipes more in-depth.
+
+If you have any questions,
+please first take a look at the [FAQ](https://github.com/fliegwerk/electron-react-boilerplate/wiki/FAQ).
+
+To learn React, check out the [React documentation](https://reactjs.org/).
+
 ## Project structure
 
 ```yaml
@@ -152,10 +166,6 @@ root:
   - package-lock.json    # detailed information about the installed dependencies and their relation to each other
   - tsconfig.json        # the Typescript configuration file for the React app and their builder
   - tsconfig.main.json   # the Typescript configuration file for the build of main process scripts of electron
+  - webpack.main.js      # the configuration file for webpack compiling the main electron process script
+  - webpack.preload.js   # the configuration file for webpack compiling the preload script for browser windows
 ```
-
-## Learn More
-
-If you have any questions, please first take a look at the [FAQ](https://github.com/fliegwerk/electron-react-boilerplate/wiki/FAQ).
-
-To learn React, check out the [React documentation](https://reactjs.org/).

@@ -1,4 +1,4 @@
-name: CI
+name: Node CI
 
 on: [push]
 
@@ -7,6 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       CI: true
+
     steps:
       - uses: actions/checkout@v2.3.4
       - uses: actions/setup-node@v2.1.2
@@ -26,15 +27,13 @@ jobs:
             ${{ runner.os }}-build-
             ${{ runner.os }}-
 
-      - name: Install dependencies
+      - name: Install Node.js dependencies
         run: npm ci
 
-      - name: Check code style and format
-        run: npm run style:ci
       - name: Build project
         run: npm run build
-      - name: Run íntegration iests
-        run: npm run test
+      - name: Run integration tests
+        run: npm test
 
       - name: Upload build artifact
         uses: actions/upload-artifact@v2.2.1
