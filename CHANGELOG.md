@@ -13,29 +13,31 @@
 # v0.2.0
 
 ## Features:
-- reworked build process: (#22)
-	- Restructured project directories
-		- Electron specific sources are now in `electron`
-		- the main process scripts are in `electron/main`
-		- the preload scripts reside in `electron/preload`
-	- new build and package scripts
-		- the Electron main script will now be packaged with webpack
-		- the preload script will also be packages with webpack
-	- secured electron main process and their APIs
-		- deactivated `nodeIntregration` and enabled `contextIsolation` to lock down renderer processes
-		- communication can only happen trough IPC with an additional layer of security with a custom implementation in the built `preload.js` script which will be loaded on every browser window start and injects the custom API into the global window context
-		- communication can only happen over registered channels
-	- extensive type support both on main process and renderer side
-	- automatic devtools loading on development build
-	- example implementations: (#7)
-		- menu builder and IPC manager on main process side
-		- ipc register and send on the renderer side in React
-	- unit tests for the custom IPC event hook
-	- global typed mocks for Jest integration tests
-	- auto update feature (#6)
-	- updated README.md (#9)
 
-	The [wiki](https://github.com/fliegwerk/electron-react-boilerplate/wiki) also contains more information about the build process and different scripts used in the project now.
+- reworked build process: (#22)
+
+  - Restructured project directories
+    - Electron specific sources are now in `electron`
+    - the main process scripts are in `electron/main`
+    - the preload scripts reside in `electron/preload`
+  - new build and package scripts
+    - the Electron main script will now be packaged with webpack
+    - the preload script will also be packages with webpack
+  - secured electron main process and their APIs
+    - deactivated `nodeIntregration` and enabled `contextIsolation` to lock down renderer processes
+    - communication can only happen trough IPC with an additional layer of security with a custom implementation in the built `preload.js` script which will be loaded on every browser window start and injects the custom API into the global window context
+    - communication can only happen over registered channels
+  - extensive type support both on main process and renderer side
+  - automatic devtools loading on development build
+  - example implementations: (#7)
+    - menu builder and IPC manager on main process side
+    - ipc register and send on the renderer side in React
+  - unit tests for the custom IPC event hook
+  - global typed mocks for Jest integration tests
+  - auto update feature (#6)
+  - updated README.md (#9)
+
+  The [wiki](https://github.com/fliegwerk/electron-react-boilerplate/wiki) also contains more information about the build process and different scripts used in the project now.
 
 ## Updates
 
