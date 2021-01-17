@@ -25,6 +25,7 @@
 		"build:main": "webpack --config webpack.main.js",
 		"build:preload": "webpack --config webpack.preload.js",
 		"build:renderer": "react-scripts build",
+		"rebuild": "electron-rebuild --parallel --types prod,dev --module-dir src",
 		"postinstall": "electron-builder install-app-deps",
 		"test": "react-scripts test",
 		"style": "prettier --write package.json '**/*{.ts,.tsx,.js,.jsx,.json,.html,.css,.scss,.yaml,.yml,.md}'",
@@ -73,7 +74,9 @@
 		}
 	},
 	"dependencies": {
-		"electron-is-dev": "^1.2.0"
+		"electron-is-dev": "^1.2.0",
+		"react": "^17.0.1",
+		"react-dom": "^17.0.1"
 	},
 	"devDependencies": {
 		"@testing-library/jest-dom": "^5.11.9",
@@ -89,11 +92,10 @@
 		"electron": "^11.2.0",
 		"electron-builder": "^22.9.1",
 		"electron-devtools-installer": "^3.1.1",
+		"electron-rebuild": "^2.3.4",
 		"eslint-config-prettier": "^7.1.0",
 		"eslint-plugin-prettier": "^3.3.1",
 		"prettier": "^2.2.1",
-		"react": "^17.0.1",
-		"react-dom": "^17.0.1",
 		"react-scripts": "4.0.1",
 		"react-test-renderer": "^17.0.1",
 		"ts-loader": "^8.0.14",
@@ -106,6 +108,7 @@
 		"extends": [
 			"react-app",
 			"react-app/jest",
+			"prettier",
 			"prettier/react",
 			"prettier/@typescript-eslint"
 		],

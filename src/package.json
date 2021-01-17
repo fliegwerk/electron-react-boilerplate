@@ -1,0 +1,24 @@
+{
+	"name": "electron-react-boilerplate",
+	"version": "0.2.0",
+	"private": true,
+	"description": "A boilerplate to develop an electron application with react in a simple manner",
+	"repository": {
+		"type": "git",
+		"url": "git@github.com:fliegwerk/electron-react-boilerplate.git"
+	},
+	"homepage": "./",
+	"bugs": {
+		"url": "https://github.com/fliegwerk/electron-react-boilerplate/issues"
+	},
+	"author": {
+		"name": "fliegwerk",
+		"email": "cockpit@fliegwerk.com",
+		"url": "https://www.fliegwerk.com/"
+	},
+	"scripts": {
+		"electron-rebuild": "../node_modules/.bin/electron-rebuild --parallel --types prod,dev --module-dir .",
+		"postinstall": "npm run electron-rebuild"
+	},
+	"dependencies": {}
+}
