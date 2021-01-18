@@ -18,7 +18,7 @@
 	},
 	"main": "./main.js",
 	"scripts": {
-		"electron-rebuild": "../node_modules/.bin/electron-rebuild --parallel --types prod,dev --module-dir .",
+		"electron-rebuild": "node ./rebuild.js",
 		"postinstall": "npm run electron-rebuild"
 	},
 	"dependencies": {}
