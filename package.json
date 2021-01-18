@@ -27,7 +27,7 @@
 		"build:preload": "webpack --config webpack.preload.js",
 		"build:renderer": "react-scripts build",
 		"rebuild": "electron-rebuild --parallel --types prod,dev --module-dir src",
-		"postinstall": "electron-builder install-app-deps",
+		"postinstall": "electron-rebuild --parallel --types prod,dev --module-dir .",
 		"test": "react-scripts test",
 		"style": "prettier --write package.json '**/*{.ts,.tsx,.js,.jsx,.json,.html,.css,.scss,.yaml,.yml,.md}'",
 		"lint": "eslint src/**/*{.ts,.tsx,.js,.jsx} --ignore-pattern node_modules/ --no-error-on-unmatched-pattern",
