@@ -21,11 +21,11 @@
 		"prestart": "concurrently npm:build:main npm:build:preload",
 		"start": "concurrently --kill-others --raw npm:start:renderer npm:start:main || exit 0",
 		"start:main": "wait-on http://localhost:3000 && electron ./build/main.js",
-		"start:renderer": "cross-env BROWSER=none react-scripts start || exit 0",
+		"start:renderer": "cross-env BROWSER=none craco start || exit 0",
 		"build": "concurrently npm:build:main npm:build:preload npm:build:renderer",
 		"build:main": "webpack --config webpack.main.js",
 		"build:preload": "webpack --config webpack.preload.js",
-		"build:renderer": "react-scripts build",
+		"build:renderer": "craco build",
 		"rebuild": "electron-rebuild --parallel --types prod,dev --module-dir src",
 		"postinstall": "electron-rebuild --parallel --types prod,dev --module-dir .",
 		"test": "react-scripts test",
@@ -89,6 +89,7 @@
 		"react-dom": "^17.0.1"
 	},
 	"devDependencies": {
+		"@craco/craco": "^6.0.0",
 		"@testing-library/jest-dom": "^5.11.9",
 		"@testing-library/react": "^11.2.3",
 		"@testing-library/react-hooks": "^5.0.0",
@@ -105,12 +106,14 @@
 		"electron-rebuild": "^2.3.4",
 		"eslint-config-prettier": "^7.1.0",
 		"eslint-plugin-prettier": "^3.3.1",
+		"license-checker-webpack-plugin": "^0.2.1",
 		"prettier": "^2.2.1",
 		"react-scripts": "4.0.1",
 		"react-test-renderer": "^17.0.1",
 		"ts-loader": "^8.0.14",
 		"typescript": "^4.1.3",
 		"wait-on": "^5.2.1",
+		"webpack": "^4.44.2",
 		"webpack-cli": "^4.3.1"
 	},
 	"eslintConfig": {

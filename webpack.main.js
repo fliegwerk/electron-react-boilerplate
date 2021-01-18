@@ -1,8 +1,8 @@
 const path = require('path');
+const webpack = require('webpack');
+const LicenseCheckerWebpackPlugin = require('license-checker-webpack-plugin');
 
-const appPackageJson = require(
-	path.join(__dirname, 'public', 'package.json')
-);
+const appPackageJson = require(path.join(__dirname, 'public', 'package.json'));
 
 const nativeModules = Object.keys(appPackageJson.dependencies);
 
@@ -53,6 +53,19 @@ module.exports = {
 		filename: 'main.js',
 		libraryTarget: 'commonjs2'
 	},
+	plugins: [
+		new webpack.EnvironmentPlugin({
+			NODE_ENV: 'production'
+		}),
+		new LicenseCheckerWebpackPlugin({
+			allow: '(Apache-2.0 OR BSD-2-Clause OR BSD-3-Clause OR MIT OR ISC OR (MIT AND Zlib))',
+			outputFilename: 'oss-licenses-main.txt'
+		}),
+		new webpack.BannerPlugin({
+			banner:
+				'See oss-licenses-main.txt for licenses of open-source projects used here.'
+		})
+	],
 	/**
 	 * Disables webpack processing of __dirname and __filename.
 	 * If you run the bundle in node.js it falls back to these values of node.js.
