@@ -1,4 +1,4 @@
-import { app, autoUpdater, dialog } from 'electron';
+import { autoUpdater, dialog } from 'electron';
 
 /**
  * Enables automatic updates by searching on the feed url in a defined interval .

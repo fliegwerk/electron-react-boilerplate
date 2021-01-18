@@ -16,6 +16,7 @@
 		"email": "cockpit@fliegwerk.com",
 		"url": "https://www.fliegwerk.com/"
 	},
+	"main": "./main.js",
 	"scripts": {
 		"electron-rebuild": "../node_modules/.bin/electron-rebuild --parallel --types prod,dev --module-dir .",
 		"postinstall": "npm run electron-rebuild"

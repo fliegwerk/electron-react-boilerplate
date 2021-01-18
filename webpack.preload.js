@@ -1,5 +1,10 @@
 const path = require('path');
-const nodeExternals = require('webpack-node-externals');
+
+const appPackageJson = require(
+	path.join(__dirname, 'public', 'package.json')
+);
+
+const nativeModules = Object.keys(appPackageJson.dependencies);
 
 const coreModules = [
 	'path',
@@ -13,7 +18,15 @@ const coreModules = [
 ];
 
 module.exports = {
-	externals: [...coreModules, nodeExternals()],
+	externals: [...coreModules, ...nativeModules],
+
+	mode: 'production',
+
+	/**
+	 * Special target to build electron preload files.
+	 * See https://webpack.js.org/concepts/targets/ for more information.
+	 */
+	target: 'electron-preload',
 
 	entry: './electron/preload/preload.ts',
 	module: {

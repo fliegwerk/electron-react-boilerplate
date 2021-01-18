@@ -1,5 +1,10 @@
 const path = require('path');
-const nodeExternals = require('webpack-node-externals');
+
+const appPackageJson = require(
+	path.join(__dirname, 'public', 'package.json')
+);
+
+const nativeModules = Object.keys(appPackageJson.dependencies);
 
 const coreModules = [
 	'path',
@@ -13,9 +18,17 @@ const coreModules = [
 ];
 
 module.exports = {
-	externals: [...coreModules, nodeExternals()],
+	externals: [...coreModules, ...nativeModules],
 
-	entry: './electron/main/electron.ts',
+	mode: 'production',
+
+	/**
+	 * Special target to build electron main files.
+	 * See https://webpack.js.org/concepts/targets/ for more information.
+	 */
+	target: 'electron-main',
+
+	entry: './electron/main/main.ts',
 	module: {
 		rules: [
 			{
@@ -37,7 +50,7 @@ module.exports = {
 	},
 	output: {
 		path: path.resolve(__dirname, 'build'),
-		filename: 'electron.js',
+		filename: 'main.js',
 		libraryTarget: 'commonjs2'
 	},
 	/**
