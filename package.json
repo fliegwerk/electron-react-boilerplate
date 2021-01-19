@@ -53,7 +53,10 @@
 			"logo192.png",
 			"logo512.png",
 			"asset-manifest.json",
-			"static/"
+			"static/",
+			"oss-licenses-main.txt",
+			"oss-licenses-preload.txt",
+			"oss-licenses-renderer.txt"
 		],
 		"directories": {
 			"buildResources": "resources",
