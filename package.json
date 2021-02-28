@@ -106,8 +106,8 @@
 		"extends": [
 			"react-app",
 			"react-app/jest",
-			"prettier/react",
-			"prettier/@typescript-eslint"
+			"plugin:prettier/recommended",
+			"prettier"
 		],
 		"plugins": [
 			"prettier"
