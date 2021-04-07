@@ -36,7 +36,7 @@ jobs:
         run: npm test
 
       - name: Upload build artifact
-        uses: actions/upload-artifact@v2.2.2
+        uses: actions/upload-artifact@v2.2.3
         with:
           name: build-${{ github.run_id }}
           path: build/
