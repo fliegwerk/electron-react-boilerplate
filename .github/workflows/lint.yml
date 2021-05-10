@@ -18,11 +18,15 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2.1.5
         with:
-          node-version: 12
+          node-version: 14
 
       # Eslint and Prettier must be in `package.json`
       - name: Install Node.js dependencies
         run: npm ci
+
+      # Remove, when setup-node action supports specifying the node version
+      - name: Install npm v7 ⬆
+        run: npm install --global npm@v7
 
       - name: Run linters
         uses: wearerequired/lint-action@v1
