@@ -29,7 +29,7 @@ jobs:
         run: npm install --global npm@v7
 
       - name: Run linters
-        uses: wearerequired/lint-action@v1
+        uses: wearerequired/lint-action@v1.9.0
         with:
           github_token: ${{ secrets.github_token }}
           # Enable linters
