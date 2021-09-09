@@ -33,7 +33,6 @@ function createWindow() {
 			nodeIntegrationInWorker: false,
 			nodeIntegrationInSubFrames: false,
 			contextIsolation: true,
-			enableRemoteModule: false,
 			// disable devtools in packages apps
 			devTools: isDev,
 			spellcheck: false,
