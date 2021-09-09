@@ -13,6 +13,7 @@ const coreModules = [
 ];
 
 module.exports = {
+	mode: 'production',
 	externals: [...coreModules, nodeExternals()],
 
 	entry: './electron/main/electron.ts',
