@@ -84,7 +84,7 @@
 		"@types/node": "^16.9.1",
 		"@types/react": "^17.0.20",
 		"@types/react-dom": "^17.0.9",
-		"concurrently": "^6.2.1",
+		"concurrently": "^6.2.2",
 		"cross-env": "^7.0.3",
 		"electron": "^15.0.0",
 		"electron-builder": "^22.11.7",
