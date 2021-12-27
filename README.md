@@ -6,6 +6,7 @@
 [![License](https://img.shields.io/github/license/fliegwerk/electron-react-boilerplate)](https://github.com/fliegwerk/electron-react-boilerplate)
 ![Project version](https://img.shields.io/github/package-json/v/fliegwerk/electron-react-boilerplate)
 ![React dependency version](https://img.shields.io/github/package-json/dependency-version/fliegwerk/electron-react-boilerplate/dev/react)
+![react-scripts dependency version](https://img.shields.io/github/package-json/dependency-version/fliegwerk/electron-react-boilerplate/dev/react-scripts)
 ![Electron dependency version](https://img.shields.io/github/package-json/dependency-version/fliegwerk/electron-react-boilerplate/dev/electron)
 ![Typescript dependency version](https://img.shields.io/github/package-json/dependency-version/fliegwerk/electron-react-boilerplate/dev/typescript)
 
