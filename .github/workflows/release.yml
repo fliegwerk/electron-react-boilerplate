@@ -8,27 +8,25 @@ on:
 
 jobs:
   release:
-    runs-on: ${{ matrix.os }}
-
     strategy:
       matrix:
         os: [macos-latest, ubuntu-latest, windows-latest]
 
+    name: Release for ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+
     steps:
-      - uses: actions/checkout@v2.4.0
-      - uses: actions/setup-node@v2.5.0
+      - name: Checkout 📥
+        uses: actions/checkout@v2.4.0
+      - name: Setup Node 💿
+        uses: actions/setup-node@v2.5.0
         with:
-          node-version: 14
+          node-version: 16
 
-      # Remove, when setup-node action supports specifying the node version
-      - name: Install npm v7 ⬆
-        run: npm install --global npm@v7
-
-      - name: Build/release Electron app
+      - name: Build and Release Electron app 🗜
         uses: samuelmeuli/action-electron-builder@v1.6.0
         with:
           # GitHub token, automatically provided to the action
           # (No need to define this secret in the repo settings)
           github_token: ${{ secrets.github_token }}
-
           release: true

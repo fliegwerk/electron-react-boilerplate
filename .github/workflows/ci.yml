@@ -1,35 +1,78 @@
-name: Node CI
-
-on: [push]
+name: CI
+on: [push, pull_request]
 
 jobs:
-  build:
+  style:
+    name: Style
     runs-on: ubuntu-latest
-    env:
-      CI: true
-
     steps:
-      - uses: actions/checkout@v2.4.0
-      - uses: actions/setup-node@v2.5.0
+      - name: Checkout 📥
+        uses: actions/checkout@v2.4.0
+      - name: Setup Node 💿
+        uses: actions/setup-node@v2.5.0
         with:
-          node-version: 14
+          node-version: 16
           cache: 'npm'
 
-      # Remove, when setup-node action supports specifying the node version
-      - name: Install npm v7 ⬆
-        run: npm install --global npm@v7
-
-      - name: Install Node.js dependencies
+      - name: Install development dependencies 📚
         run: npm ci
+      - name: Check code style 🧽
+        run: npm run style:ci
 
-      - name: Build project
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 📥
+        uses: actions/checkout@v2.4.0
+      - name: Setup Node 💿
+        uses: actions/setup-node@v2.5.0
+        with:
+          node-version: 16
+          cache: 'npm'
+
+      - name: Install development dependencies 📚
+        run: npm ci
+      - name: Run Linter 📑
+        run: npm run lint
+
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 📥
+        uses: actions/checkout@v2.4.0
+      - name: Setup Node 💿
+        uses: actions/setup-node@v2.5.0
+        with:
+          node-version: 16
+          cache: 'npm'
+
+      - name: Install development dependencies 📚
+        run: npm ci
+      - name: Build application 📦
         run: npm run build
-      - name: Run integration tests
-        run: npm test
 
-      - name: Upload build artifact
+      - name: Upload build artifact 📤
         uses: actions/upload-artifact@v2.3.1
         with:
           name: build-${{ github.run_id }}
           path: build/
           retention-days: 7
+
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 📥
+        uses: actions/checkout@v2.4.0
+      - name: Setup Node 💿
+        uses: actions/setup-node@v2.5.0
+        with:
+          node-version: 16
+          cache: 'npm'
+
+      - name: Install development dependencies 📚
+        run: npm ci
+      - name: Run integration tests 🛃
+        run: npm test
