@@ -1,4 +1,6 @@
-# v0.1.0
+# Changelog
+
+## v0.1.0
 
 - initial release of the project
 - Typescript Support for the main process scripts and the React app
@@ -10,9 +12,9 @@
 - automatic building and packaging on git tags
 - automatic dependency updates via dependabot
 
-# v0.2.0
+## v0.2.0
 
-## Features:
+### Features
 
 - reworked build process: (#22)
 
@@ -39,9 +41,9 @@
 
   The [wiki](https://github.com/fliegwerk/electron-react-boilerplate/wiki) also contains more information about the build process and different scripts used in the project now.
 
-## Updates
+### Updates
 
-### Dependency Updates
+#### Dependency Updates
 
 - Bump typescript from 4.1.2 to 4.1.3 (#20)
 - Bump eslint-plugin-prettier from 3.2.0 to 3.3.0 (#18)
@@ -51,6 +53,12 @@
 - Bump ts-loader from 8.0.11 to 8.0.12 (#28)
 - Bump electron from 11.0.4 to 11.1.0 (#27)
 
-### GitHub Actions Updates
+#### GitHub Actions Updates
 
 - Bump actions/setup-node from v2.1.2 to v2.1.4 (#26)
+
+## v0.3.0
+
+- update to `react-scripts` v5
+- improve CI pipeline
+- some dependency updates
